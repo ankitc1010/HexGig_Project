@@ -1,0 +1,312 @@
+p {
+    color: #777;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#owl-hero .item {
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#owl-hero .item .caption {
+    position: absolute;
+    top: 50%;
+    margin-top: -104px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 15;
+}
+
+#owl-hero .item .caption h1 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 300%;
+}
+
+#owl-hero .item .caption h1 span {
+    font-weight: 700;
+}
+
+#owl-hero .item .caption h6 {
+    color: white;
+    margin: 0;
+}
+
+#owl-hero .item .caption h1 {
+    color: white;
+}
+
+#owl-hero .owl-pagination {
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: 100%;
+    bottom: 5%;
+}
+
+#owl-hero .owl-pagination .owl-page.active span {
+    background: #fff;
+}
+
+#owl-hero .owl-pagination .owl-page span {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    opacity: 1;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#owl-hero .owl-buttons div {
+    background: #fff;
+    font-size: 24px;
+    color: #a3a3a3;
+    opacity: 1;
+}
+
+#owl-hero .owl-buttons .owl-prev {
+    left: -60px;
+}
+
+#owl-hero .owl-buttons .owl-next {
+    right: -60px;
+}
+
+#owl-hero .owl-buttons .owl-next,
+#owl-hero .owl-buttons .owl-prev {
+    position: absolute;
+    background: #fff;
+    top: 50%;
+    height: 51px;
+    width: 51px;
+    line-height: 45px;
+    border-radius: 0;
+    border: 1px solid #fff;
+    z-index: 20;
+    text-align: center;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#owl-hero:hover .owl-prev {
+    left: -5px;
+}
+
+#owl-hero:hover .owl-next {
+    right: -5px;
+}
+
+.owl-dots {
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+}
+//navbar components
+.navbar {
+    opacity: 0.9;
+    border-radius: 0;
+    font-size: 17px;
+    color: white;
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+    background-color: #212121;
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#212121, endColorstr=#707070);
+    background-image: -moz-linear-gradient(right, #212121 0%, #707070 50%,#212121 100%);
+    background-image: linear-gradient(right, #212121 0%, #707070 50%,#212121 100%);
+    background-image: -webkit-linear-gradient(right, #212121 0%, #707070 50%,#212121 100%);
+    background-image: -o-linear-gradient(right, #212121 0%, #707070 50%,#212121 100%);
+    background-image: -ms-linear-gradient(right, #212121 0%, #707070 50%,#212121 100%);
+    background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%,#212121), color-stop(50%,#707070),color-stop(100%,#212121));
+    margin: 0 0 50px;
+}
+
+.navbar-brand img {
+    width: 150px;
+}
+
+.nav {
+    text-align: center;
+    color: white;
+}
+@media (min-width: 767px) {
+    .navbar-collapse {
+        float: right;
+    }
+}
+@media (max-width: 767px) {
+    .nav {
+        padding: 15px 0;
+    }
+}
+@media (max-width: 767px) {
+    .nav {
+        padding: 15px 0;
+    }
+
+    .button {
+        text-align: right;
+    }
+
+    iframe {
+        height: 300px;
+    }
+}
+
+.events {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .progressbar-progress {
+        background: #FFCDD2 !important;
+    }
+
+    .col-md-6 {
+        padding: 8% 5%;
+        margin: 0;
+    }
+
+    .register {
+        background-color: #ffd5d5;
+    }
+
+    .photo {
+        height: inherit;
+        background-size: cover;
+    }
+
+    .row {
+        width: 100%;
+        margin: 0;
+    }
+
+    .upcoming {
+        font-size: 85%;
+        letter-spacing: 6px;
+        padding-left: 8px;
+    }
+
+    .event-date {
+        padding-left: 7px;
+        font-size: 118%;
+    }
+
+    .content {
+        background-color: #EF5350;
+        color: white;
+    }
+
+    .all-events {
+        padding: 3%;
+        background-color: #a2b539;
+        color: white;
+
+        .text {
+            text-align: right;
+            padding: 15px;
+        }
+    }
+
+    .change {
+        background-color: #558057;
+        color: white;
+        border-width: 2px;
+        padding: 15px;
+        border-style: solid;
+        border-color: white;
+        font-weight: bold;
+    }
+}
+
+.about {
+    margin: 0;
+    width: 100%;
+
+    .image {
+        position: relative;
+        overflow: hidden;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .text {
+        padding: 5%;
+
+        p {
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        .paragraphs {
+            font-style: italic;
+            color: #7c7c7c;
+            font-size: 15px;
+        }
+    }
+}
+
+.newsLetter {
+    padding: 5%;
+    margin: 0;
+    width: 100%;
+    background: #683a56;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #683a56 0%, #683a56 50%, #7d4061 51%, #ce6f75 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #683a56 0%,#683a56 50%,#7d4061 51%,#ce6f75 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #683a56 0%,#683a56 50%,#7d4061 51%,#ce6f75 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#683a56', endColorstr='#ce6f75',GradientType=1 );
+    /* IE6-9 fallback on horizontal gradient */
+    .heading {
+        color: white;
+        font-weight: bold;
+        letter-spacing: 6px;
+    }
+
+    .text {
+        color: white;
+        padding-bottom: 4%;
+    }
+
+    .input {
+        background: transparent;
+        height: 56px;
+        color: white;
+        font-weight: bold;
+        font-size: 110%;
+        border-width: 3px;
+        border-style: solid;
+        border-color: white;
+    }
+}
