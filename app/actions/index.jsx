@@ -1,18 +1,20 @@
 import firebase, {firebaseRef, googleProvider} from "firebaseCredentials";
+import {hashHistory} from 'react-router';
 
-export var addUser = (name, uid) => {
-    return {type: "ADD_USER", name, uid}
+export var addUser = (name, uid, email, photoUrl) => {
+    return {type: "ADD_USER", name, uid, email, photoUrl}
 }
 
-export var startAddUser = (name, uid) => {
+export var startAddUser = (name, uid, email, photoUrl) => {
     return (dispatch, getState) => {
         var obj = {
             name,
-            uid
+            email,
+            photoUrl
         }
-        var userDef = firebaseRef.child('user').set(obj);
+        var userDef = firebaseRef.child(`user/${uid}`).update(obj);
         return userDef.then(() => {
-            dispatch(addUser(name, uid));
+            dispatch(addUser(name, uid,email,photoUrl));
         })
     }
 }
@@ -33,6 +35,9 @@ export var startSignIn = () => {
             // The signed-in user info.
             var user = result.user;
             console.log(result);
+            dispatch(startAddUser(result.user.displayName, result.user.uid, result.user.email, result.user.photoURL)).then(()=>{
+              console.log("ready");
+            });
             // ...
         }).catch(function(error) {
             // Handle Errors here.
@@ -56,3 +61,41 @@ export var startLogout = () => {
         })
     };
 };
+
+// export var SignInRegistration = () => {
+//   return(dispatch, getState) => {
+//     dispatch
+//   }
+// }
+var changeRoute = () => {
+    return hashHistory.push('/userPage');
+}
+
+
+//actions for handling the event registration and that will be awesome
+
+export var registerEvent = (id) => {
+  return (dispatch, getState) => {
+    if(getState().user === null) {
+      dispatch(startSignIn()).then(()=> {
+        console.log("Ready");
+        setTimeout(()=>{  return firebaseRef.child(`user/${getState().user.uid}/events/${id}`).set({
+            going:true,
+            transportRequired: true
+          }).then(()=> {
+            console.log("Event Successfully Added");
+            hashHistory.push('/userPage');
+          });}, 1000)
+
+      });
+    } else {
+      return firebaseRef.child(`user/${getState().user.uid}/events/${id}`).set({
+          going:true,
+          transportRequired: true
+        }).then(()=> {
+          hashHistory.push('/userPage');
+        });
+    }
+
+  }
+}

@@ -8,9 +8,11 @@ import Main from 'Main';
 import IndexPage from 'IndexPage';
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-import {firebaseRef} from "firebaseCredentials";
+import firebase, {firebaseRef} from "firebaseCredentials";
 import AdminLoginPage from "AdminLoginPage";
 import AdminPage from "AdminPage";
+import EventPage from 'EventPage';
+import UserPage from 'UserPage';
 
 import 'imports-loader?jQuery=jquery!owl.carousel';
 import * as actions from 'actions';
@@ -21,12 +23,20 @@ store.subscribe(()=> {
   console.log("New State", state);
 })
 
-firebaseRef.on("value", (snapshot) => {
-  store.dispatch(actions.addUser(snapshot.val().user.name, snapshot.val().user.uid))
+// firebaseRef.on("value", (snapshot) => {
+//   store.dispatch(actions.startAddUser(snapshot.val().user.name, snapshot.val().user.uid))
+// })
+
+// store.dispatch(actions.startAddUser("Ankit Chauhan", 9304580349));
+firebase.auth().onAuthStateChanged((user) => {
+  if(user) {
+
+  
+  } else {
+
+    hashHistory.push('/');
+  }
 })
-
-store.dispatch(actions.startAddUser("Ankit Chauhan", 9304580349));
-
 var isAdmin = (nextState, replace, next) => {
   if(store.getState().admin === null) {
     replace('/adminLogin');
@@ -40,6 +50,8 @@ ReactDOM.render(
       <IndexRoute component={IndexPage}/>
       <Route path="/adminLogin" component={AdminLoginPage}/>
       <Route path="/adminPage" component={AdminPage} onEnter={isAdmin}/>
+      <Route path="/event/:eventId" component={EventPage} />
+      <Route path="/userPage" component={UserPage}/>
     </Route>
   </Router>
 </Provider>,

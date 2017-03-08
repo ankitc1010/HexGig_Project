@@ -14,7 +14,7 @@ class EventsDiv extends React.Component {
   }
 
   changeProgress() {
-    setInterval(()=>{
+  this.state.good = setInterval(()=>{
 
     this.setState({
       progress: (this.state.progress+0.5)
@@ -25,6 +25,9 @@ class EventsDiv extends React.Component {
       })
 
     }, 100)
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.good);
   }
 
   render() {
@@ -44,7 +47,7 @@ class EventsDiv extends React.Component {
             <h5 className="upcoming">UPCOMING EVENT</h5>
             <h1 className="event-title">VERBATTLE 2017 DEBATING CHAMPIONSHIP</h1>
             <h5 className="event-date">June 26 - July 27, 2017</h5>
-            <button className="btn register" onClick={()=> {this.props.dispatch(actions.startSignIn())} }>ONE CLICK REGISTER</button>
+            <button className="btn register" onClick={()=> {this.props.dispatch(actions.registerEvent(3432))} }>ONE CLICK REGISTER</button>
           </div>
         </div>
         <div className="row all-events">

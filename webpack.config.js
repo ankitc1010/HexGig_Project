@@ -21,13 +21,13 @@ module.exports = {
       "window.jQuery": "jquery",
             "window.Tether": 'tether'
     }),
-    new CompressionPlugin({  
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    // new CompressionPlugin({
+    //   asset: "[path].gz[query]",
+    //   algorithm: "gzip",
+    //   test: /\.js$|\.css$|\.html$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // })
   ],
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -57,7 +57,10 @@ module.exports = {
       NavBar: path.resolve(__dirname, 'app/components/NavBarComponents/NavBar'),
       EventsDiv: path.resolve(__dirname, 'app/components/IndexPageComponents/EventsDiv'),
       About: path.resolve(__dirname, 'app/components/IndexPageComponents/About'),
-      NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter')
+      NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter'),
+      EventPage: path.resolve(__dirname, 'app/components/EventPage'),
+      UserPage: path.resolve(__dirname, 'app/components/UserPage'),
+      Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header')
 
     },
     extensions: ['.js', '.jsx']
@@ -83,5 +86,5 @@ module.exports = {
     }
     ]
   },
-  // devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-eval-source-map'
 };

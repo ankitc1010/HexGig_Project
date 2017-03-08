@@ -1,8 +1,13 @@
-export var userReducer = (state = {}, actions) => {
+
+
+
+export var userReducer = (state = null, actions) => {
   switch(actions.type) {
     case "ADD_USER": return {
       name: actions.name,
-      uid: actions.uid
+      uid: actions.uid,
+      photoUrl: actions.photoUrl,
+      email: actions.email
     };
     case "REMOVE_USER": return {
       name: null,
