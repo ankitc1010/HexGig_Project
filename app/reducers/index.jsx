@@ -4,11 +4,7 @@
 export var userReducer = (state = null, actions) => {
   switch(actions.type) {
     case "ADD_USER": return {
-      name: actions.name,
-      uid: actions.uid,
-      photoUrl: actions.photoUrl,
-      email: actions.email
-    };
+      ...actions.obj};
     case "REMOVE_USER": return {
       name: null,
       uid: null

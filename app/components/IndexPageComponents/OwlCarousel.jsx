@@ -9,7 +9,7 @@ class OwlCarousel extends React.Component {
     constructor(props) {
         super(props);
     }
-    inhibit() {
+    componentWillMount() {
         $(document).ready(function() {
             $('.owl-carousel').owlCarousel({navigation: true, // Show next and prev buttons
         slideSpeed: 300,
@@ -22,12 +22,18 @@ class OwlCarousel extends React.Component {
 
 
         });
+        var slideHeight = $(window).height();
 
+        $('#owl-hero .item').css('height', slideHeight);
+
+        $(window).resize(function () {
+            $('#owl-hero .item').css('height', slideHeight);
+        });
     })}
     render() {
         return (
             <div id="owl-hero" className="owl-carousel owl-theme">
-                {this.inhibit()}
+
 
 
              <div className="item" style={{backgroundColor: "#BA68C8"}}>

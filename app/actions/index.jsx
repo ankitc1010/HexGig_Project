@@ -1,22 +1,10 @@
 import firebase, {firebaseRef, googleProvider} from "firebaseCredentials";
 import {hashHistory} from 'react-router';
-
-export var addUser = (name, uid, email, photoUrl) => {
-    return {type: "ADD_USER", name, uid, email, photoUrl}
-}
-
-export var startAddUser = (name, uid, email, photoUrl) => {
-    return (dispatch, getState) => {
-        var obj = {
-            name,
-            email,
-            photoUrl
-        }
-        var userDef = firebaseRef.child(`user/${uid}`).update(obj);
-        return userDef.then(() => {
-            dispatch(addUser(name, uid,email,photoUrl));
-        })
-    }
+//SignUP and SignIn Routes
+//-------------------------------------------------------------------------
+//Basic Redux Routes
+export var addUser = (obj) => {
+    return {type: "ADD_USER", obj}
 }
 
 export var removeUser = () => {
@@ -27,7 +15,66 @@ export var changeAdminStatus = (status) => {
     return {type: "CHANGE_ADMIN_STATUS", status}
 }
 
-export var startSignIn = () => {
+
+//MiddleWare for Logout
+
+export var startLogout = () => {
+    return (dispatch, getState) => {
+        return firebase.auth().signOut().then((result) => {
+            console.log("Successfully Signed Out", result);
+            dispatch(removeUser());
+        }, (error) => {
+            console.log("Some Error Occured");
+        })
+    };
+};
+
+
+//SignIn MiddleWares Awesome
+export var changeRoute = () => {
+    return(dispatch, getState) => {
+    hashHistory.push('/userPage');
+  }
+}
+
+export var storeAction = () => {
+
+    return (dispatch, getState) => {
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+            console.log(user);
+            var userRef = firebase.database().ref(`user/${user.uid}`);
+            return userRef.once("value").then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log("The snapshot value", snapshot.val());
+                    dispatch(addUser(snapshot.val()));
+                } else {
+                    var obj = {
+                        name: user.displayName,
+                        photoUrl: user.photoURL,
+                        email: user.email,
+                        uid: user.uid
+                    };
+                    userRef.set(obj);
+                    dispatch(addUser(obj));
+                }
+            })
+
+        } else {
+            console.log("Not Signned In");
+        }
+    }
+}
+
+export var startSignInTheRealOne = () => {
+    return (dispatch, getState) => {
+        dispatch(signInOperation());
+        dispatch(storeAction());
+    }
+}
+
+export var signInOperation = () => {
     return (dispatch, getState) => {
         return firebase.auth().signInWithPopup(googleProvider).then(function(result) {
             // This gives you a Google Access Token. You can use it to access the Google API.
@@ -35,9 +82,7 @@ export var startSignIn = () => {
             // The signed-in user info.
             var user = result.user;
             console.log(result);
-            dispatch(startAddUser(result.user.displayName, result.user.uid, result.user.email, result.user.photoURL)).then(()=>{
-              console.log("ready");
-            });
+            console.log("signInOnClickRegisterEvent action dispatched successfully");
             // ...
         }).catch(function(error) {
             // Handle Errors here.
@@ -52,50 +97,66 @@ export var startSignIn = () => {
     }
 }
 
-export var startLogout = () => {
+export var checkForEventAlreadyAdded = (uid, id) => {
     return (dispatch, getState) => {
-        return firebase.auth().signOut().then((result) => {
-            console.log("Successfully Signed Out", result);
-        }, (error) => {
-            console.log("Some Error Occured");
-        })
-    };
-};
+        var eventRef = firebase.database().ref(`user/${uid}/events`);
+        return eventRef.once("value").then((snapshot) => {
+            if (snapshot.child(id).exists()) {
+                console.log('Already Exist Event');
+            } else {
+                eventRef.child(id).set({transportRequired: false, going: true});
 
-// export var SignInRegistration = () => {
-//   return(dispatch, getState) => {
-//     dispatch
-//   }
-// }
-var changeRoute = () => {
-    return hashHistory.push('/userPage');
+            }
+        }).catch((error) => {
+            console.log("Error Occured");
+        })
+    }
 }
 
-
-//actions for handling the event registration and that will be awesome
-
-export var registerEvent = (id) => {
-  return (dispatch, getState) => {
-    if(getState().user === null) {
-      dispatch(startSignIn()).then(()=> {
-        console.log("Ready");
-        setTimeout(()=>{  return firebaseRef.child(`user/${getState().user.uid}/events/${id}`).set({
-            going:true,
-            transportRequired: true
-          }).then(()=> {
-            console.log("Event Successfully Added");
-            hashHistory.push('/userPage');
-          });}, 1000)
-
-      });
-    } else {
-      return firebaseRef.child(`user/${getState().user.uid}/events/${id}`).set({
-          going:true,
-          transportRequired: true
-        }).then(()=> {
-          hashHistory.push('/userPage');
-        });
+export var addUserToEventObject = (uid, id) => {
+    return (dispatch, getState) => {
+        var userRef = firebase.database().ref(`events/${id}/users`);
+        return userRef.once("value").then((snapshot) => {
+            if (snapshot.child(uid).exists()) {
+                console.log("User Already Registered");
+            } else {
+                userRef.child(uid).set({haveAttended: false})
+            }
+        })
     }
+}
 
+export var EventRegistrationEvent = (id) => {
+    return (dispatch, getState) => {
+        var user = firebase.auth().currentUser;
+        if (user) {
+            var userStore = getState().user;
+            if (userStore) {
+                dispatch(checkForEventAlreadyAdded(user.uid, id));
+                dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
+
+            } else {
+                dispatch(storeAction());
+                dispatch(checkForEventAlreadyAdded(user.uid, id));
+                dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
+
+            }
+        } else {
+            dispatch(signInOperation());
+            dispatch(storeAction());
+            dispatch(checkForEventAlreadyAdded(user.uid, id));
+            dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
+
+        }
+
+    }
+}
+
+//userPage MiddleWare actions
+export var checkBeforeUserPage = () => {
+  return(dispatch, getState) => {
+    if(!getState().user) {
+      hashHistory.push("/");
+    }
   }
 }

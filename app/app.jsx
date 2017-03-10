@@ -13,6 +13,7 @@ import AdminLoginPage from "AdminLoginPage";
 import AdminPage from "AdminPage";
 import EventPage from 'EventPage';
 import UserPage from 'UserPage';
+import UserPageTest from 'UserPageTest';
 
 import 'imports-loader?jQuery=jquery!owl.carousel';
 import * as actions from 'actions';
@@ -23,6 +24,8 @@ store.subscribe(()=> {
   console.log("New State", state);
 })
 
+store.dispatch(actions.storeAction());
+
 // firebaseRef.on("value", (snapshot) => {
 //   store.dispatch(actions.startAddUser(snapshot.val().user.name, snapshot.val().user.uid))
 // })
@@ -31,7 +34,7 @@ store.subscribe(()=> {
 firebase.auth().onAuthStateChanged((user) => {
   if(user) {
 
-  
+
   } else {
 
     hashHistory.push('/');
@@ -52,6 +55,7 @@ ReactDOM.render(
       <Route path="/adminPage" component={AdminPage} onEnter={isAdmin}/>
       <Route path="/event/:eventId" component={EventPage} />
       <Route path="/userPage" component={UserPage}/>
+      <Route path="/userPageTest" component={UserPageTest}/>
     </Route>
   </Router>
 </Provider>,

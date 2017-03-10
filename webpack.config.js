@@ -60,7 +60,8 @@ module.exports = {
       NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter'),
       EventPage: path.resolve(__dirname, 'app/components/EventPage'),
       UserPage: path.resolve(__dirname, 'app/components/UserPage'),
-      Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header')
+      Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header'),
+      UserPageTest: path.resolve(__dirname, 'app/components/UserPageTest'),
 
     },
     extensions: ['.js', '.jsx']

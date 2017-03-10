@@ -9,11 +9,11 @@ class Header extends React.Component {
         <div className="container paddingTop">
           <div className="row">
             <div className="col-md-6">
-              <center>  <img src={this.props.user.photoUrl} className="img-responsive img-circle" width="300"/></center>
+              <center>  <img src={String(this.props.user.photoUrl)} className="img-responsive img-circle" width="300"/></center>
             </div>
             <div className="col-md-6">
               <div className="row">
-                <center><h1>{this.props.user.name}</h1></center>
+                <center><h1>{String(this.props.user.name)}</h1></center>
               </div>
               <div className="row">
                 <center><h2>34 Events Registered</h2></center>
