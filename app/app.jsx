@@ -14,7 +14,8 @@ import AdminPage from "AdminPage";
 import EventPage from 'EventPage';
 import UserPage from 'UserPage';
 import UserPageTest from 'UserPageTest';
-
+import EventList from 'EventList';
+import EventPageTest from 'EventPageTest';
 import 'imports-loader?jQuery=jquery!owl.carousel';
 import * as actions from 'actions';
 var store = require('store').config();
@@ -56,6 +57,8 @@ ReactDOM.render(
       <Route path="/event/:eventId" component={EventPage} />
       <Route path="/userPage" component={UserPage}/>
       <Route path="/userPageTest" component={UserPageTest}/>
+      <Route path="/eventTestPage" component={EventPageTest}/>
+      <Route path="/eventList" component={EventList}/>
     </Route>
   </Router>
 </Provider>,

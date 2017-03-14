@@ -526,9 +526,145 @@ text-transform: uppercase;
     }
 
 
+
+
+
+
+
 }
 @media (max-width: 767px) {
     .user-page {
         width: 100%;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.events-list{
+  padding-top:120px;
+
+  .heading{
+    h1{
+          color: #bdc8d2;
+          font-size: 6.5rem;
+    }
+  }
+  .event-component{
+    margin-top:10px;
+    margin-bottom: 10px;
+    .date{
+      text-align:center;
+      background: #ffd300;
+      span{
+            font-size: 114px;
+      }
+      p{
+        position:relative;
+        top:-27px;
+        text-transform: uppercase;
+color: black;
+      }
+    }
+    .content{
+      background: #353636;
+      color:white;
+      text-align: center;
+      align-items: left;
+      h2{
+        padding-top:35px;
+        color:#deb801;
+        text-transform: uppercase;
+      }
+      hr{
+      border-top: 7px solid #fff;
+      width:80%;
+
+      }
+      p{
+        color: #dadada;
+      }
+    }
+    .button{
+        background: lightgreen;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+//EventPageTest
+.event-template{
+  padding-top:60px;
+  width: 100%;
+
+  .title-of-event{
+    text-align: center;
+
+    padding-top:60px;
+    padding-bottom:60px;
+    background:#df6c5a;
+    color:white;
+    width:100%;
+    h1{
+      font-size: 53px;
+      font-weight: 900;
+    }
+  }
+  .details{
+    padding-top:50px;
+    background: #92bead;
+    h4{
+    color:white;
+    font-size: 1.2rem
+  }
+  }
+  .imp-details{
+    margin-top:3px;
+    padding:40px;
+    padding-left: 10%;
+padding-right: 10%;
+    i{
+      font-size: 50px;
+color: #868484;
+    }
+    .title{
+      position: relative;
+top: -19px;
+padding-left: 10px;
+font-weight: 900;
+color: #c72a2a;
+    }
+    .other-details{
+      position: relative;
+      left: 52px;
+      font-size: 14px;
+          top: -23px;
+              width: 84%;
+    }
+    .button-segment{
+      align-items: right;
+      text-align: right;
+    }
+  }
 }

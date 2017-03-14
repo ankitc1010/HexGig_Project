@@ -7578,6 +7578,84 @@ input {
 @media (max-width: 767px) {
   .user-page {
     width: 100%; } }
+
+.events-list {
+  padding-top: 120px; }
+  .events-list .heading h1 {
+    color: #bdc8d2;
+    font-size: 6.5rem; }
+  .events-list .event-component {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    .events-list .event-component .date {
+      text-align: center;
+      background: #ffd300; }
+      .events-list .event-component .date span {
+        font-size: 114px; }
+      .events-list .event-component .date p {
+        position: relative;
+        top: -27px;
+        text-transform: uppercase;
+        color: black; }
+    .events-list .event-component .content {
+      background: #353636;
+      color: white;
+      text-align: center;
+      align-items: left; }
+      .events-list .event-component .content h2 {
+        padding-top: 35px;
+        color: #deb801;
+        text-transform: uppercase; }
+      .events-list .event-component .content hr {
+        border-top: 7px solid #fff;
+        width: 80%; }
+      .events-list .event-component .content p {
+        color: #dadada; }
+    .events-list .event-component .button {
+      background: lightgreen; }
+
+.event-template {
+  padding-top: 60px;
+  width: 100%; }
+  .event-template .title-of-event {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #df6c5a;
+    color: white;
+    width: 100%; }
+    .event-template .title-of-event h1 {
+      font-size: 53px;
+      font-weight: 900; }
+  .event-template .details {
+    padding-top: 50px;
+    background: #92bead; }
+    .event-template .details h4 {
+      color: white;
+      font-size: 1.2rem; }
+  .event-template .imp-details {
+    margin-top: 3px;
+    padding: 40px;
+    padding-left: 10%;
+    padding-right: 10%; }
+    .event-template .imp-details i {
+      font-size: 50px;
+      color: #868484; }
+    .event-template .imp-details .title {
+      position: relative;
+      top: -19px;
+      padding-left: 10px;
+      font-weight: 900;
+      color: #c72a2a; }
+    .event-template .imp-details .other-details {
+      position: relative;
+      left: 52px;
+      font-size: 14px;
+      top: -23px;
+      width: 84%; }
+    .event-template .imp-details .button-segment {
+      align-items: right;
+      text-align: right; }
 /**
  * Owl Carousel v2.2.0
  * Copyright 2013-2016 David Deutsch

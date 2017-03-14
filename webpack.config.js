@@ -62,6 +62,8 @@ module.exports = {
       UserPage: path.resolve(__dirname, 'app/components/UserPage'),
       Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header'),
       UserPageTest: path.resolve(__dirname, 'app/components/UserPageTest'),
+      EventList: path.resolve(__dirname,'app/components/EventsList'),
+      EventPageTest: path.resolve(__dirname,'app/components/EventPageTest')
 
     },
     extensions: ['.js', '.jsx']
