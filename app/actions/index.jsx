@@ -30,10 +30,64 @@ export var startLogout = () => {
 };
 
 
+//addEventsAction
+export var checkEventsThereAction = () => {
+  return(dispatch, getState) => {
+    if(!getState().events) {
+      dispatch(addEventToStore());
+    }
+  }
+}
+
+export var addEventToStore = () => {
+  return(dispatch, getState) => {
+    var EventRef = firebase.database().ref('events');
+    return EventRef.once("value").then((snapshot)=> {
+      var events = snapshot.val() || {};
+      var parsedEvents = [];
+      Object.keys(events).forEach((id) => {
+        parsedEvents.push({
+          id,
+          ...events[id]
+        });
+      });
+      dispatch(EventToStoreAdded(parsedEvents));
+    })
+  }
+}
+
+export var EventToStoreAdded = (events) =>{
+  return {
+    type: "ADD_EVENTS_TO_STORE",
+    events
+  }
+}
+
+
+//eventTOdISPLAY
+export var fillInEvent = (eventId) => {
+  return(dispatch, getState) => {
+    return firebaseRef.child(`events/${eventId}`).once('value').then((snapshot)=>{
+      dispatch(storeEventtoStore(snapshot.val()));
+    })
+  }
+}
+
+export var storeEventtoStore = (object) => {
+  return {
+    type:"ADD_EVENT_TO_DISPLAY_ON_PAGE",
+    event: object
+  }
+}
+
+
 //SignIn MiddleWares Awesome
 export var changeRoute = () => {
     return(dispatch, getState) => {
-    hashHistory.push('/userPage');
+      setTimeout(() => {
+        return hashHistory.push('/userPage');
+      }, 700);
+
   }
 }
 

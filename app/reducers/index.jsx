@@ -24,3 +24,19 @@ export var adminReducer = (state = null, actions) => {
     default: return state;
   }
 }
+
+
+export var eventsReducer = (state=null, actions) => {
+  switch(actions.type) {
+    case "ADD_EVENTS_TO_STORE": return actions.events;
+    default: return state;
+  }
+}
+
+
+export var eventReducer = (state=null, actions) => {
+    switch(actions.type) {
+      case "ADD_EVENT_TO_DISPLAY_ON_PAGE": return actions.event;
+      default: return state;
+    }
+}

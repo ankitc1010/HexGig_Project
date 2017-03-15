@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import cover from 'img/debate.jpg';
 import * as actions from 'actions';
 import Progress from 'react-progressbar';
+import {hashHistory} from 'react-router';
 
 class EventsDiv extends React.Component {
   constructor() {
@@ -47,7 +48,7 @@ class EventsDiv extends React.Component {
             <h5 className="upcoming">UPCOMING EVENT</h5>
             <h1 className="event-title">VERBATTLE 2017 DEBATING CHAMPIONSHIP</h1>
             <h5 className="event-date">June 26 - July 27, 2017</h5>
-            <button className="btn register" onClick={()=> {this.props.dispatch(actions.EventRegistrationEvent(3434))} }>ONE CLICK REGISTER</button>
+            <button className="btn register" onClick={()=>{hashHistory.push(`event/-KedtkU7XR-EkFWeyO9G`)} }>More Details</button>
           </div>
         </div>
         <div className="row all-events">
@@ -55,7 +56,7 @@ class EventsDiv extends React.Component {
             <h3>View all Events, that you can take join</h3>
           </div>
           <div className="col-md-4 button">
-          <button className="btn change">VIEW ALL EVENTS</button>
+          <a className="btn change" onClick={()=>{hashHistory.push('/eventList')}}>VIEW ALL EVENTS</a>
         </div>
         </div>
       </div>

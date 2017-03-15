@@ -433,7 +433,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
         .id {
             color: white;
             font-weight: 900;
-            font-size: 40px;
+                font-size: 15px;
             letter-spacing: 2px;
             padding-top: 93px;
         }
@@ -571,7 +571,7 @@ text-transform: uppercase;
     .date{
       text-align:center;
       background: #ffd300;
-      span{
+      .dateinSpan{
             font-size: 114px;
       }
       p{
@@ -602,10 +602,25 @@ color: black;
     }
     .button{
         background: lightgreen;
+        text-align: center;
+        height: auto;
+        i{
+          position: relative;
+top: 45%;
+font-size: 32px;
+        }
     }
   }
 }
 
+@media (max-width: 767px) {
+
+          .button{
+            height: 85px !important;
+
+          }
+
+}
 
 
 

@@ -58,12 +58,13 @@ module.exports = {
       EventsDiv: path.resolve(__dirname, 'app/components/IndexPageComponents/EventsDiv'),
       About: path.resolve(__dirname, 'app/components/IndexPageComponents/About'),
       NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter'),
-      EventPage: path.resolve(__dirname, 'app/components/EventPage'),
-      UserPage: path.resolve(__dirname, 'app/components/UserPage'),
+      EventPage: path.resolve(__dirname, 'app/components/EventPageTest'),
+      UserPage: path.resolve(__dirname, 'app/components/UserPageTest'),
       Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header'),
       UserPageTest: path.resolve(__dirname, 'app/components/UserPageTest'),
       EventList: path.resolve(__dirname,'app/components/EventsList'),
-      EventPageTest: path.resolve(__dirname,'app/components/EventPageTest')
+      EventPageTest: path.resolve(__dirname,'app/components/EventPageTest'),
+      RowComponent: path.resolve(__dirname,'app/components/EventsListComponent/RowComponent')
 
     },
     extensions: ['.js', '.jsx']

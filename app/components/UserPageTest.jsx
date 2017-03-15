@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 import image from 'img/hoho.jpg';
+import * as actions from 'actions';
+import {connect} from 'react-redux';
+import {hashHistory} from 'react-router';
 class UserPageTest extends Component {
+  componentWillMount() {
+      this.props.dispatch(actions.checkBeforeUserPage());
+      if (!this.props.user) {
+          this.props.dispatch(actions.checkBeforeUserPage());
+          this.render = () => {
+              return false;
+          }
+      };
+
+  }
     render() {
         return (
             <div className="container user-page">
                 <div className="row">
                     <div className="col-md-6 profile-segment">
-                        <img src={image} className="img-fluid rounded-circle profile-pic"/><br/>
-                        <h3 className="profile-name">Rosita Chauhan</h3>
+                        <img src={this.props.user.photoUrl} className="img-fluid rounded-circle profile-pic"/><br/>
+                        <h3 className="profile-name">{this.props.user.name}</h3>
                     </div>
                     <div className="col-md-6 xp-segment">
                         <p className="xp-count">23</p>
@@ -21,7 +34,7 @@ class UserPageTest extends Component {
 
                     </div>
                     <div className="col-md-6 id-segment">
-                        <p className="id">23klsdfjioweo</p>
+                        <p className="id">{this.props.user.uid}</p>
                         <p className="id-text">VERBATTLE ID</p>
 
                     </div>
@@ -40,7 +53,7 @@ class UserPageTest extends Component {
                         View All Events
                     </div>
                     <div className="col-md-4">
-                        <button className="btn buttonExpand">Take me there!</button>
+                        <button className="btn buttonExpand" onClick={() => hashHistory.push('eventList')}>Take me there!</button>
                     </div>
                 </div>
                 <div className="row event-black-white">
@@ -77,4 +90,10 @@ class UserPageTest extends Component {
     }
 }
 
-export default UserPageTest;
+export default connect(
+  state => {
+    return {
+      user: state.user
+    }
+  }
+)(UserPageTest);

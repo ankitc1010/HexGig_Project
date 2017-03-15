@@ -26,20 +26,26 @@ store.subscribe(()=> {
 })
 
 store.dispatch(actions.storeAction());
+store.dispatch(actions.checkEventsThereAction());
 
-// firebaseRef.on("value", (snapshot) => {
-//   store.dispatch(actions.startAddUser(snapshot.val().user.name, snapshot.val().user.uid))
-// })
+// firebaseRef.child('events').push({
+//   address:"Room 67 \n 14 Tottenham Court Road \n London \n ksdkso",
+//   contact:"Email: verbattle@verb.com\\n Twitter: @verbattle",
+//  details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium lacus vitae mi malesuada sodales. Praesent eu suscipit elit, at tristique enim. Vestibulum facilisis congue libero, elementum dignissim diam consectetur nec. Curabitur euismod imperdiet iaculis.",
+//  name: "AWESOME COOL EVENT",
+//  schedule: "Thursday 29 August 2017 \n Presentation 12am to 9am \n Results 8pm",
+//  startDate: 23,
+//  startMonth: "FEB",
+//  tick: "featured",
+//  type: "premium"
+//
+// });
 
-// store.dispatch(actions.startAddUser("Ankit Chauhan", 9304580349));
 firebase.auth().onAuthStateChanged((user) => {
-  if(user) {
+  if(!user) {
+  hashHistory.push('/');
 
-
-  } else {
-
-    hashHistory.push('/');
-  }
+}
 })
 var isAdmin = (nextState, replace, next) => {
   if(store.getState().admin === null) {

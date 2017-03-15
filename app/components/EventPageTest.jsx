@@ -1,17 +1,27 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import * as actions from 'actions';
 
 class EventPageTest extends Component {
-  render() {
-    return (
-      <div className="container event-template">
+  constructor(props){
+    super(props);
+    var {dispatch,params} = this.props;
+    dispatch(actions.fillInEvent(params.eventId));
+  }
+
+  thinkingtoRender(){
+    if(this.props.event === null){
+      return "Loading";
+    } else {
+      return (
         <div className="row">
             <div className="col-md-12 title-of-event">
-            <h1>VERBATTLE 2017</h1>
+            <h1>{this.props.event.name}</h1>
           </div>
 
         <div className="col-md-5 details">
           <h4>
-            Lorem ipsum dolor sit amet, <i className="fa fa-clock-o" aria-hidden="true"></i>consectetur adipiscing elit. Pellentesque pretium lacus vitae mi malesuada sodales. Praesent eu suscipit elit, at tristique enim.
+            {this.props.event.details}
           </h4>
         </div>
         <div className="col-md-7 imp-details">
@@ -19,37 +29,47 @@ class EventPageTest extends Component {
                 <span className="icon"><i className="fa fa-clock-o" aria-hidden="true"></i>
 </span>
                 <span className="title">
-                  HEADING
+                  SCHEDULE
                 </span><br/>
                 <div className="other-details">
-                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                {this.props.event.schedule}
                 </div>
             </div>
             <div className="location">
-              <span className="icon"><i className="fa fa-clock-o" aria-hidden="true"></i>
+              <span className="icon"><i className="fa fa-map-marker" aria-hidden="true"></i>
 </span>
               <span className="title">
-                  HEADING
+                  LOCATION
               </span><br/>
               <div className="other-details">
-                Lorem ipsum dolor sit amet
+                {this.props.event.address}
               </div>
             </div>
             <div className="reception">
-              <span className="icon"><i className="fa fa-clock-o" aria-hidden="true"></i>
+              <span className="icon"><i className="fa fa-comments" aria-hidden="true"></i>
 </span>
               <span className="title">
-                  HEADING
+                  CONTACT
               </span><br/>
               <div className="other-details">
-                Lorem ipsum dolor sit ametLorem ipsum dolor sit amet
+                {this.props.event.contact}
               </div>
             </div>
             <div className="button-segment">
-              <button className="btn btn-success">Register</button>
+              <button className="btn btn-success" onClick={()=> this.props.dispatch(actions.EventRegistrationEvent(this.props.params.eventId))}>Register</button>
             </div>
         </div>
       </div>
+      )
+    }
+  }
+
+  render() {
+    var {event, params} = this.props;
+    return (
+      <div className="container event-template">
+        {this.thinkingtoRender()}
+
     </div>
 
     )
@@ -57,4 +77,10 @@ class EventPageTest extends Component {
 }
 
 
-export default EventPageTest;
+export default connect(
+  state => {
+    return {
+      event: state.event
+    }
+  }
+)(EventPageTest);

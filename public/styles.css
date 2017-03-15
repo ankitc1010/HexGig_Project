@@ -7503,7 +7503,7 @@ input {
     .user-page .id-segment .id {
       color: white;
       font-weight: 900;
-      font-size: 40px;
+      font-size: 15px;
       letter-spacing: 2px;
       padding-top: 93px; }
   .user-page .profile-completion {
@@ -7590,7 +7590,7 @@ input {
     .events-list .event-component .date {
       text-align: center;
       background: #ffd300; }
-      .events-list .event-component .date span {
+      .events-list .event-component .date .dateinSpan {
         font-size: 114px; }
       .events-list .event-component .date p {
         position: relative;
@@ -7612,7 +7612,17 @@ input {
       .events-list .event-component .content p {
         color: #dadada; }
     .events-list .event-component .button {
-      background: lightgreen; }
+      background: lightgreen;
+      text-align: center;
+      height: auto; }
+      .events-list .event-component .button i {
+        position: relative;
+        top: 45%;
+        font-size: 32px; }
+
+@media (max-width: 767px) {
+  .button {
+    height: 85px !important; } }
 
 .event-template {
   padding-top: 60px;
