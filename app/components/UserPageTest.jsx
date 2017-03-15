@@ -19,7 +19,7 @@ class UserPageTest extends Component {
             <div className="container user-page">
                 <div className="row">
                     <div className="col-md-6 profile-segment">
-                        <img src={this.props.user.photoUrl} className="img-fluid rounded-circle profile-pic"/><br/>
+                        <img src={this.props.user.photoUrl || image} className="img-fluid rounded-circle profile-pic"/><br/>
                         <h3 className="profile-name">{this.props.user.name}</h3>
                     </div>
                     <div className="col-md-6 xp-segment">
