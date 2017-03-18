@@ -197,6 +197,7 @@ export var EventRegistrationEvent = (id) => {
 
             }
         } else {
+          
             dispatch(signInOperation());
             dispatch(storeAction());
             userAfterAuth = firebase.auth().currentUser;
