@@ -18,7 +18,7 @@ class IndexPage extends React.Component {
         <EventsDiv/>
       <NewsLetter/>
 
-          <button className="btn btn-success" onClick={()=> {this.props.dispatch(actions.startSignIn())} }>SignIn</button>
+          <button className="btn btn-success" onClick={()=> {this.props.dispatch(actions.signInOperation())} }>SignIn</button>
           <button className="btn btn-warning" onClick={() => {this.props.dispatch(actions.startLogout())} }>LogOut</button>
         </div>
         )

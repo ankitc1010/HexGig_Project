@@ -146,6 +146,7 @@ export var signInOperation = () => {
             var email = error.email;
             // The firebase.auth.AuthCredential type that was used.
             var credential = error.credential;
+            console.log(error);
             // ...
         });
     }
@@ -197,7 +198,7 @@ export var EventRegistrationEvent = (id) => {
 
             }
         } else {
-          
+
             dispatch(signInOperation());
             dispatch(storeAction());
             userAfterAuth = firebase.auth().currentUser;
