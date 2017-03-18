@@ -183,6 +183,7 @@ export var addUserToEventObject = (uid, id) => {
 export var EventRegistrationEvent = (id) => {
     return (dispatch, getState) => {
         var user = firebase.auth().currentUser;
+        var userAfterAuth = null;
         if (user) {
             var userStore = getState().user;
             if (userStore) {
@@ -198,8 +199,9 @@ export var EventRegistrationEvent = (id) => {
         } else {
             dispatch(signInOperation());
             dispatch(storeAction());
-            dispatch(checkForEventAlreadyAdded(user.uid, id));
-            dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
+            userAfterAuth = firebase.auth().currentUser;
+            dispatch(checkForEventAlreadyAdded(userAfterAuth.uid, id));
+            dispatch(addUserToEventObject(userAfterAuth.uid, id)).then(()=>dispatch(changeRoute()));
 
         }
 
