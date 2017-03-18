@@ -137,6 +137,10 @@ export var signInOperation = () => {
             var user = result.user;
             console.log(result);
             console.log("signInOnClickRegisterEvent action dispatched successfully");
+            dispatch(storeAction());
+
+            dispatch(checkForEventAlreadyAdded(user.uid, id));
+            dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
             // ...
         }).catch(function(error) {
             // Handle Errors here.
@@ -201,7 +205,7 @@ export var EventRegistrationEvent = (id) => {
 
             dispatch(signInOperation());
             dispatch(storeAction());
-          
+
             dispatch(checkForEventAlreadyAdded(user.uid, id));
             dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
 
