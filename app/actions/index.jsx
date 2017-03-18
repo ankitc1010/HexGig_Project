@@ -201,9 +201,9 @@ export var EventRegistrationEvent = (id) => {
 
             dispatch(signInOperation());
             dispatch(storeAction());
-            userAfterAuth = firebase.auth().currentUser;
-            dispatch(checkForEventAlreadyAdded(userAfterAuth.uid, id));
-            dispatch(addUserToEventObject(userAfterAuth.uid, id)).then(()=>dispatch(changeRoute()));
+          
+            dispatch(checkForEventAlreadyAdded(user.uid, id));
+            dispatch(addUserToEventObject(user.uid, id)).then(()=>dispatch(changeRoute()));
 
         }
 
