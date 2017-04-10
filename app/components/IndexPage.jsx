@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import * as actions from 'actions';
 import EventsDiv from 'EventsDiv';
 import About from 'About';
+import SignInDiv from 'SignInDiv';
 import NewsLetter from 'NewsLetter';
 class IndexPage extends React.Component {
     constructor(props) {
@@ -14,12 +15,12 @@ class IndexPage extends React.Component {
         return (
           <div>
           <OwlCarousel/>
-          <About/>
-        <EventsDiv/>
-      <NewsLetter/>
+          {/* <About/> */}
+        {/* <EventsDiv/> */}
+      {/* <NewsLetter/> */}
+      <SignInDiv/>
 
-          <button className="btn btn-success" onClick={()=> {this.props.dispatch(actions.signInOperation())} }>SignIn</button>
-          <button className="btn btn-warning" onClick={() => {this.props.dispatch(actions.startLogout())} }>LogOut</button>
+        
         </div>
         )
     }

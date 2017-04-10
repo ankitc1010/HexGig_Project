@@ -2,13 +2,18 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
-
+var HTMLWebpackPlugin = require('html-webpack-plugin');
+const VENDOR_LIBS = [
+  'script-loader!jquery/dist/jquery.min.js',
+  'script-loader!tether/dist/js/tether.min.js','firebase', 'react', 'react-dom', 'react-progressbar', 'react-redux', 'react-router', 'redux', 'redux-thunk'
+];
 module.exports = {
-  entry: [
-    'script-loader!jquery/dist/jquery.min.js',
-    'script-loader!tether/dist/js/tether.min.js',
-    './app/app.jsx'
-  ],
+  entry: {
+    bundle:'./app/app.jsx',
+    vendor:VENDOR_LIBS
+  },
+
+
   externals: {
     jquery: 'jQuery',
     tether: 'tether'
@@ -21,18 +26,23 @@ module.exports = {
       "window.jQuery": "jquery",
             "window.Tether": 'tether'
     }),
-    // new CompressionPlugin({
-    //   asset: "[path].gz[query]",
-    //   algorithm: "gzip",
-    //   test: /\.js$|\.css$|\.html$/,
-    //   threshold: 10240,
-    //   minRatio: 0.8
-    // })
+    new webpack.optimize.CommonsChunkPlugin({
+      names:['vendor','manifest']
+    }),
+    new HTMLWebpackPlugin({
+      template:'app/index.html'
+    }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ],
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: './bundle.js',
-    publicPath: ''
+    filename: '[name].[chunkhash].js'
   },
   resolve: {
 
@@ -47,6 +57,9 @@ module.exports = {
       owlCarouselCss: 'owl-carousel-2/assets/owl.carousel.min.css',
       IndexPage: path.resolve(__dirname, 'app/components/IndexPage'),
       OwlCarousel: path.resolve(__dirname, 'app/components/IndexPageComponents/OwlCarousel'),
+      SignInDiv: path.resolve(__dirname, 'app/components/IndexPageComponents/SignInDiv'),
+      LoaderScreen: path.resolve(__dirname, 'app/components/LoaderScreen'),
+      MainPortal: path.resolve(__dirname, 'app/components/MainPortal'),
       reducers: path.resolve(__dirname, 'app/reducers/index.jsx'),
       store: path.resolve(__dirname, 'app/store/index.jsx'),
       actions: path.resolve(__dirname, 'app/actions/index.jsx'),
@@ -60,11 +73,22 @@ module.exports = {
       NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter'),
       EventPage: path.resolve(__dirname, 'app/components/EventPageTest'),
       UserPage: path.resolve(__dirname, 'app/components/UserPageTest'),
-      Header: path.resolve(__dirname, 'app/components/UserPageComponents/Header'),
+      ListRow: path.resolve(__dirname, 'app/components/UserPageComponents/ListRow'),
       UserPageTest: path.resolve(__dirname, 'app/components/UserPageTest'),
       EventList: path.resolve(__dirname,'app/components/EventsList'),
       EventPageTest: path.resolve(__dirname,'app/components/EventPageTest'),
-      RowComponent: path.resolve(__dirname,'app/components/EventsListComponent/RowComponent')
+      RowComponent: path.resolve(__dirname,'app/components/EventsListComponent/RowComponent'),
+      CertificateGeneration: path.resolve(__dirname,'app/components/AdminPageComponents/CertificateGeneration'),
+      EventCreation: path.resolve(__dirname,'app/components/AdminPageComponents/EventCreation'),
+      IndexAdminPage: path.resolve(__dirname,'app/components/AdminPageComponents/IndexAdminPage'),
+      VolunteerAddAdminPage: path.resolve(__dirname,'app/components/AdminPageComponents/VolunteerAddAdminPage'),
+      VolunteerDisplayPage: path.resolve(__dirname,'app/components/AdminPageComponents/VolunteerDisplayPage'),
+
+
+      ClaimRow: path.resolve(__dirname, 'app/components/AdminPageComponents/ClaimRow'),
+      AdminCreateMember: path.resolve(__dirname, 'app/components/AdminPageComponents/AdminCreateMember'),
+
+
 
     },
     extensions: ['.js', '.jsx']
@@ -90,5 +114,5 @@ module.exports = {
     }
     ]
   },
-  devtool: 'cheap-module-eval-source-map'
+  // devtool: 'cheap-module-eval-source-map'
 };

@@ -1,4 +1,17 @@
+export var loaderReducer = (state = false, actions) => {
+  switch(actions.type){
+    case "CHANGE_LOADER": return !state;
+    default: return state;
+  }
+}
 
+
+export var claimsReducer = (state = null, actions) => {
+  switch(actions.type) {
+    case "FEED_IN": return actions.claims;
+    default: return state;
+  }
+}
 
 
 export var userReducer = (state = null, actions) => {
@@ -15,7 +28,12 @@ export var userReducer = (state = null, actions) => {
 
 
 
-
+export var pointsReducer = (state=null, actions) => {
+  switch(actions.type) {
+    case "LOAD_POINTS": return actions.points;
+    default: return state;
+  }
+}
 
 
 export var adminReducer = (state = null, actions) => {

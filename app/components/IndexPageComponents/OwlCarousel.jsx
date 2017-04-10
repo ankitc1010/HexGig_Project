@@ -39,20 +39,20 @@ class OwlCarousel extends React.Component {
              <div className="item" style={{backgroundColor: "#BA68C8"}}>
                  <div className="caption">
 
-                     <h1> <span>Verbattle</span></h1>
-                    <h6>Democracy | Speech & Debates</h6>
+                     <h1> <span>NOB</span></h1>
+                    <h6>Awesome Bangalore</h6>
                  </div>
              </div>
              <div className="item" style={{backgroundColor:"#F9A825"}}>
                  <div className="caption">
-                   <h1> <span>Verbattle</span></h1>
-                  <h6>Communication | Conflict Resolution</h6>
+                   <h1> <span>NOB</span></h1>
+                  <h6>Awesome Bangalore</h6>
                  </div>
              </div>
              <div className="item" style={{backgroundColor:'#00897B'}}>
                  <div className="caption">
-                   <h1> <span>Verbattle</span></h1>
-                  <h6>Conflict Resolution | Leadership</h6>
+                   <h1> <span>NOB</span></h1>
+                  <h6>Awesome Bangalore</h6>
                  </div>
              </div>
 

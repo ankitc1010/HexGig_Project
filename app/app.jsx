@@ -11,11 +11,21 @@ import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import firebase, {firebaseRef} from "firebaseCredentials";
 import AdminLoginPage from "AdminLoginPage";
 import AdminPage from "AdminPage";
-import EventPage from 'EventPage';
-import UserPage from 'UserPage';
-import UserPageTest from 'UserPageTest';
-import EventList from 'EventList';
-import EventPageTest from 'EventPageTest';
+// import CertificateGeneration from "CertificateGeneration";
+// import EventCreation from "EventCreation";
+// import IndexAdminPage from "IndexAdminPage";
+// import VolunteerAddAdminPage from "VolunteerAddAdminPage";
+// import VolunteerDisplayPage from "VolunteerDisplayPage";
+// import EventPage from 'EventPage';
+// import UserPage from 'UserPage';
+// import UserPageTest from 'UserPageTest';
+// import EventList from 'EventList';
+// import EventPageTest from 'EventPageTest';
+// import 'react-dates/lib/css/_datepicker.css';
+// import 'cropperjs/dist/cropper.css';
+import 'loaders.css/loaders.min.css';
+import MainPortal from 'MainPortal';
+
 import 'imports-loader?jQuery=jquery!owl.carousel';
 import * as actions from 'actions';
 var store = require('store').config();
@@ -25,8 +35,7 @@ store.subscribe(()=> {
   console.log("New State", state);
 })
 
-store.dispatch(actions.storeAction());
-store.dispatch(actions.checkEventsThereAction());
+
 
 // firebaseRef.child('events').push({
 //   address:"Room 67 \n 14 Tottenham Court Road \n London \n ksdkso",
@@ -40,31 +49,46 @@ store.dispatch(actions.checkEventsThereAction());
 //  type: "premium"
 //
 // });
-
-firebase.auth().onAuthStateChanged((user) => {
-  if(!user) {
-  hashHistory.push('/');
-
-}
+//
+firebase.database().ref('user').on("child_changed", ()=>{
+  store.dispatch(actions.LoadPointsFirebase());
+});
+firebase.database().ref().child('claims').on("child_added", ()=>{
+  store.dispatch(actions.LoadClaimsFromFirebase());
 })
 var isAdmin = (nextState, replace, next) => {
   if(store.getState().admin === null) {
     replace('/adminLogin');
   } next();
 }
+var isUser = (nextState, replace, next) => {
+  if(store.getState().user === null) {
+    replace('/');
+  } next();
+}
+
 
 ReactDOM.render(
   <Provider store={store}>
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={IndexPage}/>
-      <Route path="/adminLogin" component={AdminLoginPage}/>
-      <Route path="/adminPage" component={AdminPage} onEnter={isAdmin}/>
-      <Route path="/event/:eventId" component={EventPage} />
-      <Route path="/userPage" component={UserPage}/>
-      <Route path="/userPageTest" component={UserPageTest}/>
-      <Route path="/eventTestPage" component={EventPageTest}/>
-      <Route path="/eventList" component={EventList}/>
+      <Route path="mainPortal" component={MainPortal} onEnter={isUser}></Route>
+      <Route path="adminPage" component={AdminPage} onEnter={isAdmin} ></Route>
+      <Route path="adminLogin" component={AdminLoginPage}></Route>
+      {/* <Route path="/adminLogin" component={AdminLoginPage}></Route>
+      <Route path="/event/:eventId" component={EventPage}></Route>
+      <Route path="/userPage" component={UserPage}></Route>
+      <Route path="/userPageTest" component={UserPageTest}></Route>
+      <Route path="/eventTestPage" component={EventPageTest}></Route>
+      <Route path="/eventList" component={EventList}></Route>
+      <Route path="adminPage" component={AdminPage} >
+        <IndexRoute component={IndexAdminPage}/>
+        <Route path="/adminPage/certificategenerate" component={CertificateGeneration}></Route>
+        <Route path="/adminPage/volunteeraddadminpage" component={VolunteerAddAdminPage}></Route>
+        <Route path="/adminPage/eventcreate" component={EventCreation}></Route>
+        <Route path="/adminPage/volunteerdisplaypage" component={VolunteerDisplayPage}></Route>
+      </Route> */}
     </Route>
   </Router>
 </Provider>,

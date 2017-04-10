@@ -1,13 +1,14 @@
 import firebase from "firebase";
 
 try { // this will happen only once and thatis awesome
-var config = {
-  apiKey: "AIzaSyAm63yJ4bFkKtWZyZjiLUijIWR6qGqYO-I",
-      authDomain: "verbattle-2b90c.firebaseapp.com",
-      databaseURL: "https://verbattle-2b90c.firebaseio.com",
-      storageBucket: "verbattle-2b90c.appspot.com",
-      messagingSenderId: "936645570254"
-};
+  var config = {
+      apiKey: "AIzaSyCujwELv4s-wYrP4RdfUa7uSdP6BUjYkWU",
+      authDomain: "aiesec-nob.firebaseapp.com",
+      databaseURL: "https://aiesec-nob.firebaseio.com",
+      projectId: "aiesec-nob",
+      storageBucket: "aiesec-nob.appspot.com",
+      messagingSenderId: "630442297142"
+    };
 firebase.initializeApp(config);
 
 } catch(e) {
