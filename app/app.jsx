@@ -4,13 +4,15 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import 'bootstrapJs';
 import 'bootstrapCss';
 import 'applicationStyles';
-import Main from 'Main';
-import IndexPage from 'IndexPage';
+import Main from './components/Main';
+import IndexPage from './components/IndexPage';
+// import Main from 'Main';
+
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-import firebase, {firebaseRef} from "firebaseCredentials";
-import AdminLoginPage from "AdminLoginPage";
-import AdminPage from "AdminPage";
+// import firebase, {firebaseRef} from "firebaseCredentials";
+// import AdminLoginPage from "AdminLoginPage";
+// import AdminPage from "AdminPage";
 // import CertificateGeneration from "CertificateGeneration";
 // import EventCreation from "EventCreation";
 // import IndexAdminPage from "IndexAdminPage";
@@ -23,8 +25,8 @@ import AdminPage from "AdminPage";
 // import EventPageTest from 'EventPageTest';
 // import 'react-dates/lib/css/_datepicker.css';
 // import 'cropperjs/dist/cropper.css';
-import 'loaders.css/loaders.min.css';
-import MainPortal from 'MainPortal';
+// import 'loaders.css/loaders.min.css';
+// import MainPortal from 'MainPortal';
 
 import 'imports-loader?jQuery=jquery!owl.carousel';
 import * as actions from 'actions';
@@ -50,32 +52,34 @@ store.subscribe(()=> {
 //
 // });
 //
-firebase.database().ref('user').on("child_changed", ()=>{
-  store.dispatch(actions.LoadPointsFirebase());
-});
-firebase.database().ref().child('claims').on("child_added", ()=>{
-  store.dispatch(actions.LoadClaimsFromFirebase());
-})
-var isAdmin = (nextState, replace, next) => {
-  if(store.getState().admin === null) {
-    replace('/adminLogin');
-  } next();
-}
-var isUser = (nextState, replace, next) => {
-  if(store.getState().user === null) {
-    replace('/');
-  } next();
-}
+// firebase.database().ref('user').on("child_changed", ()=>{
+//   store.dispatch(actions.LoadPointsFirebase());
+// });
+// firebase.database().ref().child('claims').on("child_added", ()=>{
+//   store.dispatch(actions.LoadClaimsFromFirebase());
+// })
+// var isAdmin = (nextState, replace, next) => {
+//   if(store.getState().admin === null) {
+//     replace('/adminLogin');
+//   } next();
+// }
+// var isUser = (nextState, replace, next) => {
+//   if(store.getState().user === null) {
+//     replace('/');
+//   } next();
+// }
 
 
 ReactDOM.render(
   <Provider store={store}>
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-      <IndexRoute component={IndexPage}/>
+      <IndexRoute component={IndexPage}></IndexRoute>
+      {/* <Route path="/seller/:sellerId" component={SellerPage}/> */}
+      {/* <IndexRoute component={IndexPage}/>
       <Route path="mainPortal" component={MainPortal} onEnter={isUser}></Route>
       <Route path="adminPage" component={AdminPage} onEnter={isAdmin} ></Route>
-      <Route path="adminLogin" component={AdminLoginPage}></Route>
+      <Route path="adminLogin" component={AdminLoginPage}></Route> */}
       {/* <Route path="/adminLogin" component={AdminLoginPage}></Route>
       <Route path="/event/:eventId" component={EventPage}></Route>
       <Route path="/userPage" component={UserPage}></Route>

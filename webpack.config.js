@@ -47,47 +47,18 @@ module.exports = {
   resolve: {
 
     alias: {
-      Main: path.resolve(__dirname,'app/components/Main'),
-      Jumbotron: path.resolve(__dirname,'app/components/JumbotronComponents/jumbotron'),
+
       applicationStyles: path.resolve(__dirname, 'app/styles/app.scss'),
       bootstrapJs: 'bootstrap/dist/js/bootstrap.min.js',
       bootstrapCss: 'bootstrap/dist/css/bootstrap.min.css',
       tether: 'tether/dist/js/tether.min.js',
       owlCarouselJs: 'owl-carousel-2/owl.carousel.min.js',
       owlCarouselCss: 'owl-carousel-2/assets/owl.carousel.min.css',
-      IndexPage: path.resolve(__dirname, 'app/components/IndexPage'),
-      OwlCarousel: path.resolve(__dirname, 'app/components/IndexPageComponents/OwlCarousel'),
-      SignInDiv: path.resolve(__dirname, 'app/components/IndexPageComponents/SignInDiv'),
-      LoaderScreen: path.resolve(__dirname, 'app/components/LoaderScreen'),
-      MainPortal: path.resolve(__dirname, 'app/components/MainPortal'),
       reducers: path.resolve(__dirname, 'app/reducers/index.jsx'),
       store: path.resolve(__dirname, 'app/store/index.jsx'),
       actions: path.resolve(__dirname, 'app/actions/index.jsx'),
       firebaseCredentials: path.resolve(__dirname, 'app/firebaseCredentials/index.jsx'),
-      img: path.resolve(__dirname, 'app/img'),
-      AdminLoginPage: path.resolve(__dirname, 'app/components/AdminLoginPage'),
-      AdminPage: path.resolve(__dirname, 'app/components/AdminPage'),
-      NavBar: path.resolve(__dirname, 'app/components/NavBarComponents/NavBar'),
-      EventsDiv: path.resolve(__dirname, 'app/components/IndexPageComponents/EventsDiv'),
-      About: path.resolve(__dirname, 'app/components/IndexPageComponents/About'),
-      NewsLetter: path.resolve(__dirname, 'app/components/IndexPageComponents/NewsLetter'),
-      EventPage: path.resolve(__dirname, 'app/components/EventPageTest'),
-      UserPage: path.resolve(__dirname, 'app/components/UserPageTest'),
-      ListRow: path.resolve(__dirname, 'app/components/UserPageComponents/ListRow'),
-      UserPageTest: path.resolve(__dirname, 'app/components/UserPageTest'),
-      EventList: path.resolve(__dirname,'app/components/EventsList'),
-      EventPageTest: path.resolve(__dirname,'app/components/EventPageTest'),
-      RowComponent: path.resolve(__dirname,'app/components/EventsListComponent/RowComponent'),
-      CertificateGeneration: path.resolve(__dirname,'app/components/AdminPageComponents/CertificateGeneration'),
-      EventCreation: path.resolve(__dirname,'app/components/AdminPageComponents/EventCreation'),
-      IndexAdminPage: path.resolve(__dirname,'app/components/AdminPageComponents/IndexAdminPage'),
-      VolunteerAddAdminPage: path.resolve(__dirname,'app/components/AdminPageComponents/VolunteerAddAdminPage'),
-      VolunteerDisplayPage: path.resolve(__dirname,'app/components/AdminPageComponents/VolunteerDisplayPage'),
-
-
-      ClaimRow: path.resolve(__dirname, 'app/components/AdminPageComponents/ClaimRow'),
-      AdminCreateMember: path.resolve(__dirname, 'app/components/AdminPageComponents/AdminCreateMember'),
-
+      img: path.resolve(__dirname, 'app/img')
 
 
     },

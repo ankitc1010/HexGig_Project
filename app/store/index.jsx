@@ -1,19 +1,16 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
 
-import {userReducer, adminReducer, eventsReducer, loaderReducer, eventReducer, pointsReducer, claimsReducer} from "reducers";
+import {userReducer, sellerReducer, sellersinfoReducer} from "reducers";
 
 export var config = () => {
   var reducer = redux.combineReducers({
     user: userReducer,
-    admin: adminReducer,
-    events: eventsReducer,
-    event: eventReducer,
-    loaderstate: loaderReducer,
-    claims: claimsReducer,
-    points: pointsReducer
+    sellers: sellerReducer,
+    sellerinfo: sellersinfoReducer
   });
-  var store = redux.createStore(reducer, redux.compose(redux.applyMiddleware(thunk)));
+  var store = redux.createStore(reducer, redux.compose(redux.applyMiddleware(thunk),
+   window.devToolsExtension ? window.devToolsExtension() : f => f));
   return store;
 
 }
