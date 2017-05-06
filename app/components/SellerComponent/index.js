@@ -7,7 +7,6 @@ import * as actions from 'actions';
 class Seller extends Component {
   componentWillMount(){
     firebase.database().ref('seller').once("value", (snapshot)=> {
-      console.log(snapshot.val());
       var sellers = snapshot.val() || {};
                   var parsedSellers = [];
                   Object.keys(sellers).forEach((id) => {
@@ -16,7 +15,6 @@ class Seller extends Component {
                           ...sellers[id]
                       });
                   });
-                  console.log(parsedSellers);
                   this.props.dispatch(actions.addSellers(parsedSellers));
     })
   }
@@ -26,7 +24,6 @@ class Seller extends Component {
            return "Loading";
        } else {
            return sellers.map((entity) => {
-             console.log(entity);
                return (
                  <div className="col-12 col-md-6 col-md-3 col-lg-3" key={entity.id}>
                      <div className="card">
