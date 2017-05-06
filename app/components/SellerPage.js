@@ -150,11 +150,15 @@ class SellerPage extends Component {
                             </div>
                           </div>
                           <hr/>
-
+                          <div className="container">
                           <div className="row load-more">
-                          <center>  Show All Reviews</center>
-                          </div>
+                            <div className="col-md-4 col-12 col-sm-12"></div>
+                            <div className="col-md-4 col-12 col-sm-12">
+                                <center><p>  Show All Reviews</p></center>
+                            </div>
 
+                          </div>
+                        </div>
 
                         </div>
 

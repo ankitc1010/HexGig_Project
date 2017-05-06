@@ -58,28 +58,28 @@ class Seller extends Component {
         return (
             <div className="container seller-container">
                 <div className="row select-row">
-                    <div className="col-12 col-sm-12 col-md-3 alignRight">
+                    <div className="col-12 col-sm-12 col-md-2 alignLeft">
                         <select className="select">
-                            <option>File Format&nbsp;&nbsp;</option>
+                            <option>File Format&nbsp;</option>
                         </select>
                     </div>
-                    <div className="col-12 col-sm-12 col-md-3 alignRight">
+                    <div className="col-12 col-sm-12 col-md-2 alignLeft">
                         <select className="select">
-                            <option>Services Included&nbsp;&nbsp;</option>
+                            <option>Services Included&nbsp;</option>
                         </select>
                     </div>
-                    <div className="col-12 col-sm-12 col-md-6 alignRight">
+                    <div className="col-12 col-sm-12 col-md-8 alignRight">
                         <span className="sort-by">
                             Sort by:
                         </span>
                         <select className="select">
-                            <option>Avg. Customer Rating &nbsp;&nbsp;</option>
+                            <option>Avg. Customer Rating &nbsp;</option>
                         </select>
                     </div>
                 </div>
                 <div className="row seller-row">
                   {this.renderSellers.bind(this)()}
-                    <button className="load-more">LOAD MORE</button>
+                    <p className="btn btn-default load-more">LOAD MORE</p>
                 </div>
             </div>
         );

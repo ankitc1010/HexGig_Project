@@ -243,7 +243,7 @@ nav {
         border-radius: 4px;
         background-color: #7e84db;
         margin-top: 80px;
-        padding: 25px 28px 25px 42.5px;
+            padding: 3% 3% 3% 3%;
 
         .sort-by {
             padding-top: 2px;
@@ -284,8 +284,11 @@ nav {
             font-weight: 600;
             letter-spacing: 0.7px;
             text-align: center;
+            align-content: center;
             color: #ffffff;
             margin-top: 60px;
+            padding-top:17px;
+            cursor:pointer;
         }
 
         .owl-carousel:hover .owl-nav .owl-next {
@@ -750,7 +753,7 @@ padding-left: 23px;
             border-radius: 4px;
             background-color: #f07cb1;
             font-size: 15px;
-            font-weight: bold;
+            font-weight: 600;
             letter-spacing: 0.7px;
             color: #ffffff;
             margin-left: 31%;
@@ -773,6 +776,9 @@ padding:10px;
 }
 .alignRight{
   text-align: right;
+}
+.alignLeft{
+  text-align: left;
 }
 .navbar-toggler{
   background-color: white !important;
@@ -807,6 +813,9 @@ text-align: center;}
     .cool{
       margin-top: 20px;
     }
+    .alignLeft{
+      text-align: right !important;
+    }
 }
 @media screen and (max-width: 1199px) and (min-width: 992px) {
     .caraousel{
@@ -833,6 +842,9 @@ text-align: center;}
     }
     .cool{
       margin-top: 20px;
+    }
+    .alignLeft{
+      text-align: right !important;
     }
 
 }
