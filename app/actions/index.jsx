@@ -5,6 +5,9 @@ import {hashHistory} from 'react-router';
 export var addUser = (user) => {
     return {type: "ADD_USER", user};
 }
+export var addSellers = (sellers) => {
+  return{type: "ADD_SELLERS", sellers};
+}
 export var FacebookLogin = () => {
     return (dispatch, getState) => {
         firebase.auth().signInWithPopup(facebookProvider).then(function(result) {

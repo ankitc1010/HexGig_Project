@@ -7,7 +7,7 @@ export var sellersinfoReducer = (state = {}, actions) => {
 
 export var sellerReducer = (state = [], actions) => {
   switch(actions.type) {
-    case 'FEED_IN': return actions.sellers;
+    case 'ADD_SELLERS': return actions.sellers;
     default: return state;
   }
 }

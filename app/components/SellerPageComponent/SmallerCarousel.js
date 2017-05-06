@@ -2,12 +2,12 @@ import React from 'react';
 import $ from 'jquery';
 import left from '../../img/left.svg';
 import right from '../../img/right.svg';
-import image1 from '../../img/page-1.svg';
-import image2 from '../../img/page-2.svg';
-import image3 from '../../img/page-3.svg';
-import image4 from '../../img/page-1.svg';
-import image5 from '../../img/page-2.svg';
-import image6 from '../../img/page-3.svg';
+import image1 from '../../img/superhero1.jpg';
+import image2 from '../../img/superhero2.jpg';
+import image3 from '../../img/superhero3.jpg';
+import image4 from '../../img/superhero4.jpg';
+import image5 from '../../img/superhero1.jpg';
+import image6 from '../../img/superhero2.jpg';
 
 
 
@@ -26,10 +26,10 @@ class OwlCarousel extends React.Component {
              items:1
          },
          600:{
-             items:3
+             items:2
          },
          1000:{
-             items:5
+             items:4
          }
      },
         transitionStyle: "fadeUp",
@@ -59,34 +59,34 @@ class OwlCarousel extends React.Component {
 
 
 
-             <div className="item" style={{backgroundImage: `url(${image1})`}}>
+             <div className="item" style={{backgroundImage: `url(${image1})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image2})`}}>
+             <div className="item" style={{backgroundImage: `url(${image2})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image3})`}}>
+             <div className="item" style={{backgroundImage: `url(${image3})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image4})`}}>
+             <div className="item" style={{backgroundImage: `url(${image4})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image5})`}}>
+             <div className="item" style={{backgroundImage: `url(${image5})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image6})`}}>
+             <div className="item" style={{backgroundImage: `url(${image6})`, backgroundSize:'cover'}}>
                  <div className="caption">
 
                  </div>

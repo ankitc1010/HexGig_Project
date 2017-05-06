@@ -47,18 +47,18 @@ class OwlCarousel extends React.Component {
 
 
 
-             <div className="item" style={{backgroundImage: `url(${image1})`}}>
+             <div className="item" style={{backgroundImage: `url(${image1})`, backgroundSize:'cover', backgroundPosition: 'center', backgroundColor: 'white'}}>
                  <div className="caption">
 
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image3})`}}>
+             <div className="item" style={{backgroundImage: `url(${image3})`, backgroundSize:'cover', backgroundPosition: 'center', backgroundColor: 'white'}}>
                  <div className="caption">
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image3})`}}>
+             <div className="item" style={{backgroundImage: `url(${image3})`, backgroundSize:'cover', backgroundPosition: 'center', backgroundColor: 'white'}}>
                  <div className="caption">
 
                  </div>

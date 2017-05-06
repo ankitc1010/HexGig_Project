@@ -6,11 +6,13 @@ import 'bootstrapCss';
 import 'applicationStyles';
 import Main from './components/Main';
 import IndexPage from './components/IndexPage';
+import SellerPage from './components/SellerPage';
+
 // import Main from 'Main';
 
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-// import firebase, {firebaseRef} from "firebaseCredentials";
+import firebase, {firebaseRef} from "firebaseCredentials";
 // import AdminLoginPage from "AdminLoginPage";
 // import AdminPage from "AdminPage";
 // import CertificateGeneration from "CertificateGeneration";
@@ -38,7 +40,9 @@ store.subscribe(()=> {
 })
 
 
-
+// firebaseRef.child('seller').push({
+//   orders: 100, startingAt: 600
+// });
 // firebaseRef.child('events').push({
 //   address:"Room 67 \n 14 Tottenham Court Road \n London \n ksdkso",
 //   contact:"Email: verbattle@verb.com\\n Twitter: @verbattle",
@@ -75,7 +79,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={IndexPage}></IndexRoute>
-      {/* <Route path="/seller/:sellerId" component={SellerPage}/> */}
+      <Route path="/seller" component={SellerPage}/>
       {/* <IndexRoute component={IndexPage}/>
       <Route path="mainPortal" component={MainPortal} onEnter={isUser}></Route>
       <Route path="adminPage" component={AdminPage} onEnter={isAdmin} ></Route>

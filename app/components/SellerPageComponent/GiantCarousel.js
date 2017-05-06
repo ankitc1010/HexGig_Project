@@ -2,9 +2,9 @@ import React from 'react';
 import $ from 'jquery';
 import left from '../../img/left.svg';
 import right from '../../img/right.svg';
-import image1 from '../../img/page-1.svg';
-import image2 from '../../img/page-2.svg';
-import image3 from '../../img/page-3.svg';
+import image1 from '../../img/webdesign.jpg';
+import image2 from '../../img/webdesign2.jpg';
+import image3 from '../../img/webdesign3.jpg';
 
 
 
@@ -47,18 +47,18 @@ class OwlCarousel extends React.Component {
 
 
 
-             <div className="item" style={{backgroundImage: `url(${image1})`}}>
+             <div className="item" style={{backgroundImage: `url(${image1})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition:'center'}}>
                  <div className="caption">
 
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image3})`}}>
+             <div className="item" style={{backgroundImage: `url(${image2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition:'center'}}>
                  <div className="caption">
 
                  </div>
              </div>
-             <div className="item" style={{backgroundImage: `url(${image3})`}}>
+             <div className="item" style={{backgroundImage: `url(${image3})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition:'center'}}>
                  <div className="caption">
 
                  </div>
